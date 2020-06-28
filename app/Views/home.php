@@ -39,7 +39,7 @@
 				<div id="divCalendar" class="front col-md-12">
 					<div class="card">
 						<div class="card-header">
-							<button id="agregar" class="btn btn-primary">Agregar Evento</button>
+							<h3>Calendario de Reservas</h3>
 						</div>
 						<div class="card-body p-0">
 							<!-- THE CALENDAR -->
@@ -73,61 +73,57 @@
 											<!-- general form elements -->
 											<div class="card card-primary">
 												<div class="card-header">
-													<h3 class="card-title">DATOS</h3>
+													<h3 class="card-title">DATOS DE RESERVA</h3>
 												</div>
 												<!-- /.card-header -->
 												<!-- form start -->
 												<?php
-                        $attributes = ['role' => 'form', 
-                        'id' => 'datos', 
-                        'enctype'=>'multipart/form-data'
-                      ];
-                        echo form_open('eventos/ingresar', $attributes);?>
+													$attributes = ['role' => 'form', 
+													'id' => 'reservas', 
+													'enctype'=>'multipart/form-data'
+												];
+													echo form_open('eventos/ingresar', $attributes);?>
 												<!--<form role="form" action="<?php //echo base_url()."musicos/ingresar"; ?>" method="POST">-->
 												<div class="card-body">
 													<div class="row">
-														<div class="form-group col-md-12">
-															<div class="select2-purple">
-																<?php
-                              $attributes = [
-                                  'name'                      => 'musicos[]',
-                                  'class'                     => 'select2bs4',
-                                  'data-placeholder'          => 'Seleccione Los Musicos',
-                                  'data-dropdown-css-class'   => 'select2-purple',
-                                  'style'                     => 'width: 100%',
-                                  'multiple'                  => 'multiple',
-                                  'id'                        => 'musicos',
-                                  'style'                     => 'width: 100%;'
-                                ];       
-                                $options = array();       
-                                /* foreach ($musicos as $key => $value):
-                                $options[$value->id_musico] = $value->nombres." ".$value->apellidos;              
-                                endforeach;  */                     
-                                echo form_label('Musicos', 'musicos');
-                                echo form_dropdown($attributes, $options);
-                            ?>
-															</div>
+														<div class="form-group col-md-8 col-12">
+															<?php
+																$attributes = [
+																	'name'                      => 'turno',
+																	'class'                     => 'form-control',
+																	'id'                        => 'turno',
+																	'style'                     => 'width: 100%;'
+																	];       
+																	$options = array();       
+																	foreach ($turno as $key => $value):
+																	$options[$value->id] = "Turno Nº". $value->turno." Desde: ".$value->hora_desde." Hasta: ".$value->hora_hasta;              
+																	endforeach;                       
+																	echo form_label('Turno', 'turno');
+																	echo form_dropdown($attributes, $options);
+																?>
 														</div>
+														<div class="form-group col-md-4 col-12">
+															<?php 
+																$attributes = [
+																	'name'=>'estado',
+																	'class'=>'form-control',
+																	'id'=>'estado',
+																	'style'=>'width: 100%'
+																];       
+																$options = array();       
+																foreach ($estado as $key => $value):
+																$options[$value->id] = $value->id;              
+																endforeach;               
+																echo form_label('Estado', 'estado');
+																echo form_dropdown($attributes, $options);
+															?>
+														</div>
+
 													</div>
 													<div class="row">
 														<div class="col-md-8">
 															<div class="row">
-																<div class="form-group col-md-6">
-																	<?php 
-                                  $attributes = [
-                                    'name'=>'barco',
-                                    'class'=>'form-control select2bs4',
-                                    'id'=>'barco',
-                                    'style'=>'width: 100%'
-                                  ];       
-                                  $options = array();       
-                                  /* foreach ($barcos as $key => $value):
-                                  $options[$value->id_barco] = $value->nombre;              
-                                  endforeach;    */                   
-                                  echo form_label('Barco', 'barco');
-                                  echo form_dropdown($attributes, $options);
-                                ?>
-																</div>
+
 																<div class="form-group col-md-6">
 																	<div class="select2-purple">
 																		<?php 
@@ -262,54 +258,55 @@
 <script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
 
 <script>
-
+	$('#modal').modal('show')
 	//Full Calendar
 	//Date for the calendar events (dummy data)
-    var date = new Date()
-    var d    = date.getDate(),
-        m    = date.getMonth(),
-        y    = date.getFullYear()
+	var date = new Date()
+	var d = date.getDate(),
+		m = date.getMonth(),
+		y = date.getFullYear()
 	var Calendar = FullCalendar.Calendar;
-    var Draggable = FullCalendarInteraction.Draggable;
+	var Draggable = FullCalendarInteraction.Draggable;
 
-    var containerEl = document.getElementById('external-events');
-    var checkbox = document.getElementById('drop-remove');
-    var calendarEl = document.getElementById('calendar');
+	var containerEl = document.getElementById('external-events');
+	var checkbox = document.getElementById('drop-remove');
+	var calendarEl = document.getElementById('calendar');
 
 	var calendar = new Calendar(calendarEl, {
 		locale: 'es',
-		plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
-		header    : {
-			left  : 'prev,next today',
+		plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid'],
+		header: {
+			left: 'prev,next today',
 			center: 'title',
-			right : 'dayGridMonth,timeGridWeek,timeGridDay'
+			right: 'dayGridMonth,timeGridWeek,timeGridDay'
 		},
-		events    : [
-        {
-          title          : 'All Day Event',
-          start          : new Date(y,m,28),
-          backgroundColor: '#f56954', //red
-          borderColor    : '#f56954', //red
-          allDay         : true
-        }
-		],
-		defaultView: 'dayGridWeek',
+		events: [{
+			title: 'All Day Event',
+			start: new Date(y, m, 28),
+			backgroundColor: '#f56954', //red
+			borderColor: '#f56954', //red
+			allDay: true
+		}],
+		defaultView: 'dayGridMonth',
 		selectable: true,
-		editable  : true,
-		droppable : true, // this allows things to be dropped onto the calendar !!!
-		drop      : function(info) {
+		editable: true,
+		droppable: true, // this allows things to be dropped onto the calendar !!!
+		drop: function (info) {
 			// is the "remove after drop" checkbox checked?
 			if (checkbox.checked) {
-			// if so, remove the element from the "Draggable Events" list
-			info.draggedEl.parentNode.removeChild(info.draggedEl);
+				// if so, remove the element from the "Draggable Events" list
+				info.draggedEl.parentNode.removeChild(info.draggedEl);
 			}
 		},
-		select: function(info) {
+		select: function (info) {
 			$('#modal').modal('show')
-			
-			const nombre = prompt('Nombre')
-			info['nombre'] = nombre 
-			agregarReserva(info)
+			/* agregarReserva(info) */
+			//const nombre = prompt('Nombre')
+			/* if (nombre) {
+				info['nombre'] = nombre
+				agregarReserva(info)
+			} */
+
 			//alert(nombre +' Clicked on: ' + info.start.getHours() + ':' + info.start.getMinutes());
 			/* alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
 			alert('Current view: ' + info.view.type); */
@@ -319,10 +316,10 @@
 	})
 	calendar.render()
 
-	const agregarReserva = function(info){
-    //Datos traidos en info
-    //allDay: true
-    /* 
+	const agregarReserva = function (info) {
+		//Datos traidos en info
+		//allDay: true
+		/* 
     end: Date Wed Jun 24 2020 00:00:00 GMT-0300 (hora estándar de Argentina)
     ​
     endStr: "2020-06-24"
@@ -337,32 +334,32 @@
     startStr: "2020-06-23"
     ​
     view: Object { uid: "2", context: {…}, isRtl: false, … }
-	​ */ 
-	const formData = new FormData()
-	formData.append('nombre', info.nombre)
-	formData.append('apellido', 'ferreyra')
-	formData.append('celular', '2246-556300')
-	formData.append('reservas', '5')
-	formData.append('id_turno', '1')
-	formData.append('id_estado', 'activo')
-
-    fetch("<?php echo base_url('home/agregarReserva'); ?>",{
-		method: 'post',
-		body: formData,
-		headers: {
-			"X-Requested-With": "XMLHttpRequest"
-		}
-	})
-	.then(function(response) {
-		return response.text();
-	})
-	.then(function(response) {
-		console.log(response);
-	});
-    
-}
+	​ */
+		const formData = new FormData()
+		formData.append('id_turno', '1')
+		formData.append('id_estado', 'activo')
+		formData.append('dni', '31635428')
+		formData.append('nombre', 'gaston')
+		formData.append('apellido', 'Ferreyra')
+		formData.append('celular', '2246-556300')
+		formData.append('reservas', '5')
 
 
+		fetch("<?php echo base_url('home/agregarReserva'); ?>", {
+				method: 'post',
+				body: formData,
+				headers: {
+					"X-Requested-With": "XMLHttpRequest"
+				}
+			})
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (response) {
+				console.log(response);
+			});
+
+	}
 </script>
 
 

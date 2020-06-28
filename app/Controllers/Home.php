@@ -1,6 +1,8 @@
 <?php namespace App\Controllers;
 
+use App\Models\EstadosModel;
 use App\Models\ReservasModel;
+use App\Models\TurnosModel;
 
 class Home extends BaseController
 {
@@ -12,24 +14,31 @@ class Home extends BaseController
 	}
 	public function index()
 	{
+		$data = [
+			'turno' => (new TurnosModel())->findAll(),
+			'estado'=> (new EstadosModel())->findAll(),
+		];
 		$data['title'] = 'Fase 5 Serendipia';
 		$data['pagina'] = 'Turnos';
 		return view('home',$data);
 	}
 
 	public function agregarReserva(){     
-				$request = \config\Services::request();                        
+		if ($this->request->isAJAX())
+        {
+            $request = \config\Services::request();                        
 				$data=[
 						'id_turno'     => $request->getPost('id_turno'),
-						'id_estado'     => $request->getPost('id_estado'),
+						'id_estado'    => $request->getPost('id_estado'),
+						'dni'  		   => '1234',
 						'nombre'       => ucwords(strtolower($request->getPost('nombre'))),
 						'apellido'     => ucwords(strtolower($request->getPost('apellido'))),
 						'celular'      => $request->getPost('celular'),
-						'reservas'       => $request->getPost('reservas'),						
+						'reservas'     => $request->getPost('reservas'),						
 				];
 				//$data['cv'] = $data['cv']->getRandomName();
 				//$data['contrato'] = $data['contrato']->getRandomName();
-				
+				//return json_encode($data);
 				if($this->reservasModel->save($data)===false):
 						$error = (array) $this->reservasModel->errors();
 						$mensaje=[
@@ -52,6 +61,11 @@ class Home extends BaseController
 						//$data = json_encode($data);                  
 						return $mensaje;
 				endif;
+        }else{
+			# Ejecuta si la petición NO es a través de AJAX.
+			throw new \CodeIgniter\Exceptions\PageNotFoundException();
+		}
+				
 
 	}
 

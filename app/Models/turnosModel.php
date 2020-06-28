@@ -2,16 +2,16 @@
 
 use CodeIgniter\Model;
 
-class ReservasModel extends Model
+class TurnosModel extends Model
 {
-        protected $table      = 'reservas';
+        protected $table      = 'turnos';
         protected $primaryKey = 'id';
 
         protected $returnType = 'object';
         protected $useSoftDeletes = true;
 
         protected $allowedFields = [
-            'id_turno', 'id_estado', 'dni', 'nombre', 'apellido', 'celular', 'reservas'
+            'turno', 'hora_desde', 'hora_hasta', 'capacidad'
         ];
 
         protected $useTimestamps = true;
@@ -20,20 +20,24 @@ class ReservasModel extends Model
         protected $deletedField  = 'deleted_at';
 
         protected $validationRules    = [
-            'nombre'    => 'required|alpha_numeric_space',
-            'apellido'  => 'required',
-            'celular'   => 'required'
+            'turno'         => 'required',
+            'hora_desde'    => 'required',
+            'hora_hasta'    => 'required',
+            'capacidad'     => 'required'
             
         ];
         protected $validationMessages = [ 
             'nombre' => [
-                'required' => "Ingrese un nombre"
+                'required' => "Ingrese un turno"
             ],
-            'apellido' => [
-                'required' => "Ingrese un apellido"
+            'hora_desde' => [
+                'required' => "Hora de inicio"
             ],
-            'celular' => [
-                'required' => "Ingrese un celular de contacto"
+            'hora_hasta' => [
+                'required' => "Hora de finalizacion"
+            ],
+            'capacidad' => [
+                'required' => "Capacidad de personas"
             ]
         ];
         protected $skipValidation     = false;
