@@ -1,366 +1,319 @@
-<?php $this->extend("layouts/general"); ?>
-
-<?php $this->section('head'); ?>
-<title>Fase 5 Serendipia</title>
-
-<!-- fullCalendar -->
-<link rel="stylesheet" href="<?php echo base_url('plugins/fullcalendar/main.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('plugins/fullcalendar-daygrid/main.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('plugins/fullcalendar-timegrid/main.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('plugins/fullcalendar-bootstrap/main.min.css'); ?>">
-<?php $this->endSection(); ?>
-
-<?php $this->section('contenido') ?>
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-	<!-- Content Header (Page header) -->
-	<section class="content-header">
-		<div class="container-fluid">
-			<!--<div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Calendario</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Calendar</li>
-            </ol>
-          </div>
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>Fase 5 | Serendipia</title>
+        <link rel="icon" type="image/x-icon" href="<?=base_url('public/assets/img/favicon.ico')?>" />
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="<?=base_url('public/assets/css/styles.css')?>" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="<?=base_url('public/assets/img/navbar-logo.png')?>" alt="" /></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ml-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ml-auto">
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Servicios</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contacto</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Ingreso</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/registrar">¿no tenés cuenta? Abrila ahora: simple y sin costo</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Cumplí con el registro de clientes en tu negocio gastronómico.</div>
+                <div class="masthead-heading text-uppercase">Agilizá la carga, búsqueda y emisión de reportes con Fase 5 Solución Web.</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/registrar">¡¡ Registrate Gratis !!</a>
+            </div>
+        </header>
+        <!-- Servicios-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Servicios</h2>
+                    <h3 class="section-subheading text-muted">Administración</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?=base_url('public/assets/img/portfolio/01-thumbnail.jpg')?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?=base_url('public/assets/img/portfolio/02-thumbnail.jpg')?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?=base_url('public/assets/img/portfolio/03-thumbnail.jpg')?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?=base_url('public/assets/img/portfolio/04-thumbnail.jpg')?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?=base_url('public/assets/img/portfolio/05-thumbnail.jpg')?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?=base_url('public/assets/img/portfolio/06-thumbnail.jpg')?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"></div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Contacto</h2>
+                    <h3 class="section-subheading text-muted">Comunicate con nosotros para resolver cualquier duda.</h3>
+                    <h3 class="section-subheading">
+                        <img class="mx-auto" src="<?=base_url('public/assets/img/logow.png')?>" alt="" />
+                        <strong style="font-size: 2.5rem; color:greenyellow;"><a href="https://api.whatsapp.com/send?phone=+5492246405401&text=Quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank">02246-15-405401</a></strong>
+                    </h3>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-left">Fase 5 | Hecho por <a href="https://www.serendipia.com.ar" target="_blank">Serendipia 2020</a></div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/fase5.serendipia/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Modal 1-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="<?=base_url('public/assets/img/close-icon.svg')?>" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Registro de Clientes</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="<?=base_url('public/assets/img/portfolio/01-thumbnail.jpg')?>" alt="" />
+                                    <p>Cumplí con el registro de clientes en tu negocio gastronómico durante el transcurso de la fase 5.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>-->
-			<!-- /.container-fluid -->
-	</section>
-
-	<!-- Main content -->
-	<section class="content">
-		<div class="container-fluid">
-			<div class="row col-md-12">
-				<div id="divCalendar" class="front col-md-12">
-					<div class="card">
-						<div class="card-header">
-							<h3>Calendario de Reservas</h3>
-						</div>
-						<div class="card-body p-0">
-							<!-- THE CALENDAR -->
-							<div id="calendar"></div>
-						</div>
-						<!-- /.card-body -->
-					</div>
-					<!-- /.card -->
-				</div>
-				<!-- /.col -->
-
-			</div>
-			<!-- /.row -->
-			<!-- /.modal -->
-			<div class="modal fade" id="modal">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title"></h4>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<!-- Main content -->
-							<section class="content">
-								<div class="container-fluid">
-
-									<div class="row">
-										<div class="col-md-12">
-											<!-- general form elements -->
-											<div class="card card-primary">
-												<div class="card-header">
-													<h3 class="card-title">DATOS DE RESERVA</h3>
-												</div>
-												<!-- /.card-header -->
-												<!-- form start -->
-												<?php
-													$attributes = ['role' => 'form', 
-													'id' => 'reservas', 
-													'enctype'=>'multipart/form-data'
-												];
-													echo form_open('eventos/ingresar', $attributes);?>
-												<!--<form role="form" action="<?php //echo base_url()."musicos/ingresar"; ?>" method="POST">-->
-												<div class="card-body">
-													<div class="row">
-														<div class="form-group col-md-8 col-12">
-															<?php
-																$attributes = [
-																	'name'                      => 'turno',
-																	'class'                     => 'form-control',
-																	'id'                        => 'turno',
-																	'style'                     => 'width: 100%;'
-																	];       
-																	$options = array();       
-																	foreach ($turno as $key => $value):
-																	$options[$value->id] = "Turno Nº". $value->turno." Desde: ".$value->hora_desde." Hasta: ".$value->hora_hasta;              
-																	endforeach;                       
-																	echo form_label('Turno', 'turno');
-																	echo form_dropdown($attributes, $options);
-																?>
-														</div>
-														<div class="form-group col-md-4 col-12">
-															<?php 
-																$attributes = [
-																	'name'=>'estado',
-																	'class'=>'form-control',
-																	'id'=>'estado',
-																	'style'=>'width: 100%'
-																];       
-																$options = array();       
-																foreach ($estado as $key => $value):
-																$options[$value->id] = $value->id;              
-																endforeach;               
-																echo form_label('Estado', 'estado');
-																echo form_dropdown($attributes, $options);
-															?>
-														</div>
-
-													</div>
-													<div class="row">
-														<div class="col-md-8">
-															<div class="row">
-
-																<div class="form-group col-md-6">
-																	<div class="select2-purple">
-																		<?php 
-                                  $attributes = [
-                                      'name'                      => 'charter',
-                                      'class'                     => 'form-control select2bs4',
-                                      'data-placeholder'          => 'Seleccione Charter',
-                                      'id'                        => 'charter',
-                                      'style'                     => 'width: 100%;'
-                                    ];       
-                                    $options = array();       
-                                    /* foreach ($charter as $key => $value):
-                                    $options[$value->id_charter] = $value->nombre." Clientes: ".$value->clientes;              
-                                    endforeach;  */                     
-                                    echo form_label('Charter', 'charter');
-                                    echo form_dropdown($attributes, $options);
-                                ?>
-																	</div>
-																</div>
-															</div>
-															<div class="row">
-																<div class="form-group col-md-6">
-																	<?php 
-                              $attributes = [
-                                'name'          => 'fecha_inicio',
-                                'class'         => 'form-control',
-                                'id'            => 'fecha_inicio',
-                                'placeholder'   => 'Fecha de Inicio',
-                                'type'          => 'date'
-                              ];                          
-                              echo form_label('Fecha De Inicio', 'fecha_inicio');
-                              echo form_input($attributes);
-                            ?></div>
-																<div class="form-group col-md-6">
-																	<?php 
-                              $attributes = [
-                                'name'          =>'fecha_fin',
-                                'class'         =>'form-control',
-                                'id'            =>'fecha_fin',
-                                'placeholder'   =>'Fecha de Fin',
-                                'type'          =>'date'
-                              ];                          
-                              echo form_label('Fecha Fin', 'fecha_fin');
-                              echo form_input($attributes);
-                            ?></div>
-															</div>
-														</div>
-
-														<div class="col-md-4">
-															<div class="input-group">
-																<?php 
-                              $attributes = [
-                                'name'    => 'observaciones',
-                                'class'   => 'form-control',
-                                'id'      => 'observaciones',
-                                'style'   => 'width: 100%',
-                                'rows'    => 4
-                              ];                 
-                              echo form_label('Observaciones', 'observaciones');
-                              echo form_textarea($attributes);
-                              
-                            ?>
-															</div>
-														</div>
-													</div>
-													<!-- end of row -->
-													<div class="row">
-														<div class="form-group col-md-12">
-															<div class="form-group">
-																<?php 
-                              $attributes = [
-                                'name'    => 'itinerario',
-                                'class'   => 'form-control',
-                                'id'      => 'itinerario',
-                                'style'   => 'width: 100%',
-                                'rows'    => 2
-                              ];                 
-                              echo form_label('Itinerario', 'itinerario');
-                              echo form_textarea($attributes);
-                            ?>
-															</div>
-														</div>
-													</div>
-													<!-- end of row -->
-
-
-												</div>
-												<!-- /.card-body -->
-											</div>
-											<!-- /.card -->
-										</div>
-									</div>
-									<!-- /.row -->
-							</section>
-							<!-- /.content -->
-						</div>
-						<div class="modal-footer justify-content-between">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-							<button type="submit" class="btn btn-primary" id="ingresar"
-								name="calendar/ingresar">Guardar</button>
-							<?php echo form_close(); ?>
-						</div>
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal -->
-		</div><!-- /.container-fluid -->
-	</section>
-	<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
-<?php $this->endSection(); ?>
-
-<?php $this->section('footer') ?>
-
-<!-- jQuery UI -->
-<script src="<?php echo base_url('plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
-<!-- fullCalendar 2.2.5 -->
-<script src="<?php echo base_url('plugins/fullcalendar/main.min.js'); ?>"></script>
-<script src="<?php echo base_url('plugins/fullcalendar-daygrid/main.min.js'); ?>"></script>
-<script src="<?php echo base_url('plugins/fullcalendar-timegrid/main.min.js'); ?>"></script>
-<script src="<?php echo base_url('plugins/fullcalendar-interaction/main.min.js'); ?>"></script>
-<script src="<?php echo base_url('plugins/fullcalendar-bootstrap/main.min.js'); ?>"></script>
-<script src='<?php echo base_url('plugins/fullcalendar/locales/es.js'); ?>'></script>
-<script src='<?php echo base_url('plugins/moment/moment.min.js'); ?>'></script>
-
-
-
-<script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
-
-<script>
-	$('#modal').modal('show')
-	//Full Calendar
-	//Date for the calendar events (dummy data)
-	var date = new Date()
-	var d = date.getDate(),
-		m = date.getMonth(),
-		y = date.getFullYear()
-	var Calendar = FullCalendar.Calendar;
-	var Draggable = FullCalendarInteraction.Draggable;
-
-	var containerEl = document.getElementById('external-events');
-	var checkbox = document.getElementById('drop-remove');
-	var calendarEl = document.getElementById('calendar');
-
-	var calendar = new Calendar(calendarEl, {
-		locale: 'es',
-		plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid'],
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'dayGridMonth,timeGridWeek,timeGridDay'
-		},
-		events: [{
-			title: 'All Day Event',
-			start: new Date(y, m, 28),
-			backgroundColor: '#f56954', //red
-			borderColor: '#f56954', //red
-			allDay: true
-		}],
-		defaultView: 'dayGridMonth',
-		selectable: true,
-		editable: true,
-		droppable: true, // this allows things to be dropped onto the calendar !!!
-		drop: function (info) {
-			// is the "remove after drop" checkbox checked?
-			if (checkbox.checked) {
-				// if so, remove the element from the "Draggable Events" list
-				info.draggedEl.parentNode.removeChild(info.draggedEl);
-			}
-		},
-		select: function (info) {
-			$('#modal').modal('show')
-			/* agregarReserva(info) */
-			//const nombre = prompt('Nombre')
-			/* if (nombre) {
-				info['nombre'] = nombre
-				agregarReserva(info)
-			} */
-
-			//alert(nombre +' Clicked on: ' + info.start.getHours() + ':' + info.start.getMinutes());
-			/* alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-			alert('Current view: ' + info.view.type); */
-			// change the day's background color just for fun
-			/*info.dayEl.style.backgroundColor = 'red'; */
-		}
-	})
-	calendar.render()
-
-	const agregarReserva = function (info) {
-		//Datos traidos en info
-		//allDay: true
-		/* 
-    end: Date Wed Jun 24 2020 00:00:00 GMT-0300 (hora estándar de Argentina)
-    ​
-    endStr: "2020-06-24"
-    ​
-    jsEvent: mouseup { target: td.fc-highlight
-    , clientX: 528, clientY: 322, … }
-    ​
-    nombre: "gastr"
-    ​
-    start: Date Tue Jun 23 2020 00:00:00 GMT-0300 (hora estándar de Argentina)
-    ​
-    startStr: "2020-06-23"
-    ​
-    view: Object { uid: "2", context: {…}, isRtl: false, … }
-	​ */
-		const formData = new FormData()
-		formData.append('id_turno', '1')
-		formData.append('id_estado', 'activo')
-		formData.append('dni', '31635428')
-		formData.append('nombre', 'gaston')
-		formData.append('apellido', 'Ferreyra')
-		formData.append('celular', '2246-556300')
-		formData.append('reservas', '5')
-
-
-		fetch("<?php echo base_url('home/agregarReserva'); ?>", {
-				method: 'post',
-				body: formData,
-				headers: {
-					"X-Requested-With": "XMLHttpRequest"
-				}
-			})
-			.then(function (response) {
-				return response.json();
-			})
-			.then(function (response) {
-				console.log(response);
-			});
-
-	}
-</script>
-
-
-<?php $this->endSection(); ?>
+        <!-- Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="<?=base_url('public/assets/img/close-icon.svg')?>" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Reservas y Turnos</h2>
+                                    <p class="item-intro text-muted">Administrá turnos y registrá las reservas.</p>
+                                    <img class="img-fluid d-block mx-auto" src="<?=base_url('public/assets/img/portfolio/02-thumbnail.jpg')?>" alt="" />
+                                    <p>Con la administración de turnos y reservas tendrás control de la ocupación de tu negocio y sucursales.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 3-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="<?=base_url('public/assets/img/close-icon.svg')?>" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Base de datos de Clientes</h2>
+                                    <p class="item-intro text-muted">Promociones por WhatsApp</p>
+                                    <img class="img-fluid d-block mx-auto" src="<?=base_url('public/assets/img/portfolio/03-thumbnail.jpg')?>" alt="" />
+                                    <p>Tené a disposición tu base de datos de clientes para mantenerlos informados de avisos, ofertas, promociones y más.</p>
+                                    <p>Mantené tu información resguardada en la nube para acceder a ella cuando necesites, desde cualquier lugar.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 4-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="<?=base_url('public/assets/img/close-icon.svg" alt="Close modal')?>" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Sucursales</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="<?=base_url('public/assets/img/portfolio/04-thumbnail.jpg')?>" alt="" />
+                                    <p>Podés administrar el número de sucursales que necesites.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 5-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="<?=base_url('public/assets/img/close-icon.svg')?>" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Informes obligatorios</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="<?=base_url('public/assets/img/portfolio/05-thumbnail.jpg')?>" alt="" />
+                                    <p>Contemplamos los requerimientos de gobierno para el registro de datos para que puedas emitir los reportes de forma sencilla y en cualquier momento.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 6-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="<?=base_url('public/assets/img/close-icon.svg')?>" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <h2 class="text-uppercase">Carga Compartida</h2>
+                                    <p class="item-intro text-muted">Permisos para empleados</p>
+                                    <img class="img-fluid d-block mx-auto" src="<?=base_url('public/assets/img/portfolio/06-thumbnail.jpg')?>" alt="" />
+                                    <p>Permití que tus empleados realicen la carga al momento de atender las mesas a través de cualquier dispositivo celular o tablet.</p>
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Contact form JS-->
+        <script src="<?=base_url('public/assets/mail/jqBootstrapValidation.js')?>"></script>
+        <script src="<?=base_url('public/assets/mail/contact_me.js')?>"></script>
+        <!-- Core theme JS-->
+        <script src="<?=base_url('public/assets/js/scripts.js')?>"></script>
+    </body>
+</html>

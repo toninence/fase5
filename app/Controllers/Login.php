@@ -7,11 +7,16 @@ class Login extends BaseController
 	{
 		helper('form');
 	}
+
 	public function index()
 	{
 		$data['title'] = 'Fase 5 Serendipia';
 		$data['pagina'] = 'Turnos';
 		return view('login',$data);
+	}
+
+	public function registrar(){
+		return view('registrar');
 	}
 
 }

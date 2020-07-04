@@ -11,7 +11,7 @@ class ReservasModel extends Model
         protected $useSoftDeletes = true;
 
         protected $allowedFields = [
-            'id_turno', 'id_estado', 'dni', 'nombre', 'apellido', 'celular', 'reservas'
+            'id_turno', 'id_estado', 'fecha', 'dni', 'nombre', 'apellido', 'celular', 'reservas'
         ];
 
         protected $useTimestamps = true;
@@ -38,4 +38,20 @@ class ReservasModel extends Model
         ];
         protected $skipValidation     = false;
         
+        public function getReservas(){
+            $builder = $this->db->table('reservas');  
+            $builder->returnType = "object";      
+            $builder->select("reservas.id, reservas.dni, reservas.nombre, reservas.apellido, reservas.celular, 
+            reservas.reservas, CONCAT(reservas.nombre, ' ', reservas.apellido, ' ', reservas.reservas, 'Pers.') AS title, 
+            reservas.fecha as startStr, 
+            turnos.hora_desde, turnos.hora_hasta AS 'end', turnos.id as turno, turnos.color as backgroundColor,
+            estados.id AS estado,  
+            CONCAT(reservas.fecha, ' ', turnos.hora_desde) AS 'start', 
+            CONCAT(reservas.fecha, ' ', turnos.hora_hasta) AS 'end'");
+            $builder->join('turnos', 'reservas.id_turno = turnos.id', 'left');
+            $builder->join('estados', 'reservas.id_estado = estados.id', 'left');
+            $builder->where('reservas.deleted_at', null);
+            $query = $builder->get();
+            return $query;
+        }
 }

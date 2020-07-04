@@ -16,7 +16,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Login');
+$routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,7 +30,23 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Login::index');
+$routes->get('/', 'Home::index');
+$routes->get('/login', 'Auth::index');
+$routes->get('/logout', 'Auth::logout');
+$routes->match(['get','post'],'/registrar', 'Auth::registrar');
+$routes->match(['get','post'],'/comercio', 'Auth::comercio');
+$routes->match(['get','post'],'/perfil', 'Perfil::index');
+$routes->get('/login/:any', 'Login::index');
+$routes->get('/reservas', 'Reservas::index');
+$routes->get('/clientes', 'Clientes::index');
+$routes->get('/comercios', 'Comercios::index');
+$routes->get('/empleados', 'Empleados::index');
+$routes->get('/mesas', 'Mesas::index');
+$routes->get('/turnos', 'Turnos::index');
+$routes->get('/localidades', 'Localidades::index');
+$routes->get('/suscripcion', 'Suscripcion::index');
+$routes->get('/salir', 'Salir::index');
+$routes->get('/inicio', 'Inicio::index');
 
 /**
  * --------------------------------------------------------------------
