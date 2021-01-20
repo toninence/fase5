@@ -5,7 +5,7 @@
 <ul>
 <li>Reservas con fecha y turnos.</li>
 <li>Control de personal.</li>
-<li>control de productos.</li>
+<li>Control de productos y categorías.</li>
 <li>Menú digital con QR.</li>
 <li>...</li>
 </ul>
